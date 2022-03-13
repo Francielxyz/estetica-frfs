@@ -15,7 +15,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class EstadoDTO implements Serializable {
 
-    @JsonProperty("name")
+    @JsonProperty("id")
     private Long id;
 
     @JsonProperty("nome")

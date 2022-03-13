@@ -7,19 +7,24 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CidadeDTO implements Serializable {
+public class TipoFuncionarioDTO implements Serializable {
 
     @JsonProperty("id")
     private Long id;
 
-    @JsonProperty("nome")
-    private String nome;
+    @JsonProperty("tipo")
+    private String tipo;
+
+    @JsonProperty("observacao")
+    private String observacao;
 
     @JsonProperty("data_cadastro")
     private Date dataCadastro;
@@ -27,6 +32,6 @@ public class CidadeDTO implements Serializable {
     @JsonProperty("status")
     private String status = String.valueOf('A');
 
-    @JsonProperty("estadoDTO")
-    private EstadoDTO estadoDTO;
+    @JsonProperty("funcionarios_DTO")
+    private List<FuncionarioDTO> funcionariosDTO = new ArrayList<>();
 }

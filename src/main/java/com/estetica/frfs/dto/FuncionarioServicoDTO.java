@@ -13,20 +13,26 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CidadeDTO implements Serializable {
+public class FuncionarioServicoDTO implements Serializable {
 
-    @JsonProperty("id")
-    private Long id;
+    @JsonProperty("funcionario_servico_PK_DTO")
+    private FuncionarioServicoPKDTO funcionarioServicoPKDTO;
 
-    @JsonProperty("nome")
-    private String nome;
+    @JsonProperty("valor_vnitario")
+    private Double valorUnitario;
+
+    @JsonProperty("total")
+    private Double total;
+
+    @JsonProperty("realiza_todos_servicos")
+    private Boolean realizaTodosServicos;
+
+    @JsonProperty("observacao")
+    private String observacao;
 
     @JsonProperty("data_cadastro")
     private Date dataCadastro;
 
     @JsonProperty("status")
     private String status = String.valueOf('A');
-
-    @JsonProperty("estadoDTO")
-    private EstadoDTO estadoDTO;
 }
