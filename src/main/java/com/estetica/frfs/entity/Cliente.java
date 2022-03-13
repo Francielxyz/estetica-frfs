@@ -14,10 +14,9 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "estado")
+@Table(name = "cliente")
 @EqualsAndHashCode
-public class Estado implements Serializable {
-
+public class Cliente implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -29,8 +28,26 @@ public class Estado implements Serializable {
     private String nome;
 
     @NotNull
-    @Column(name = "sigla", length = 2)
-    private String sigla;
+    @Column(name = "cpf", unique = true, length = 14)
+    private String cpf;
+
+    @NotNull
+    @Column(name = "data_nascimento")
+    private Date dataNascimento;
+
+    @NotNull
+    @Column(name = "telefone1", length = 14)
+    private String telefone1;
+
+    @Column(name = "telefone2", length = 14)
+    private String telefone2;
+
+    @NotNull
+    @Column(name = "email", unique = true, length = 100)
+    private String email;
+
+    @Column(name = "observacao", length = 300)
+    private String observacao;
 
     @NotNull
     @Column(name = "data_cadastro")
@@ -39,4 +56,9 @@ public class Estado implements Serializable {
     @NotNull
     @Column(name = "status", length = 1)
     private String status = String.valueOf('A');
+
+    @NotNull
+    @OneToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "id_cidade")
+    private Cidade idCidade;
 }

@@ -20,16 +20,18 @@ public class Cidade implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
-    @Column(name = "nome", nullable = false)
+    @Column(name = "nome", length = 100)
     private String nome;
 
+    @NotNull
     @Column(name = "data_cadastro")
     private Date dataCadastro;
 
+    @NotNull
     @Column(name = "status", length = 1)
     private String status = String.valueOf('A');
 

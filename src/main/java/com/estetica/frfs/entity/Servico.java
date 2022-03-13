@@ -14,10 +14,9 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "estado")
+@Table(name = "servico")
 @EqualsAndHashCode
-public class Estado implements Serializable {
-
+public class Servico implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -29,8 +28,20 @@ public class Estado implements Serializable {
     private String nome;
 
     @NotNull
-    @Column(name = "sigla", length = 2)
-    private String sigla;
+    @Column(name = "tempo_servico")
+    private Integer tempoServico;
+
+    @NotNull
+    @Column(name = "tipo_servico", length = 80)
+    private String tipoServico;
+
+    @NotNull
+    @Column(name = "descricao", length = 250)
+    private String descricao;
+
+    @NotNull
+    @Column(name = "preco")
+    private Double preco;
 
     @NotNull
     @Column(name = "data_cadastro")
@@ -39,4 +50,5 @@ public class Estado implements Serializable {
     @NotNull
     @Column(name = "status", length = 1)
     private String status = String.valueOf('A');
+
 }
