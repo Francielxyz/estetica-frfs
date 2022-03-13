@@ -8,7 +8,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -50,5 +52,13 @@ public class Servico implements Serializable {
     @NotNull
     @Column(name = "status", length = 1)
     private String status = String.valueOf('A');
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "ass_servico_agendado",
+            uniqueConstraints = @UniqueConstraint(columnNames = {"id_servico", "id_agendar_servico"}),
+            joinColumns = @JoinColumn(name = "id_servico"),
+            inverseJoinColumns = @JoinColumn(name = "id_agendar_servico"))
+    private List<AgendarServico> agendarServicos = new ArrayList<>();
 
 }

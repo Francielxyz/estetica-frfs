@@ -8,7 +8,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -60,5 +62,13 @@ public class AgendarServico implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_funcionario")
     private Funcionario idFuncionario;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "ass_servico_agendado",
+            uniqueConstraints = @UniqueConstraint(columnNames = {"id_agendar_servico", "id_servico"}),
+            joinColumns = @JoinColumn(name = "id_agendar_servico"),
+            inverseJoinColumns = @JoinColumn(name = "id_servico"))
+    private List<Servico> servicos = new ArrayList<>();
 
 }
