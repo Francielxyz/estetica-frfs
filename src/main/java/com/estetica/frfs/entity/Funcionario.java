@@ -71,6 +71,11 @@ public class Funcionario implements Serializable {
     @Column(name = "status", length = 1)
     private String status = String.valueOf('A');
 
+    @NotNull
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_cidade")
+    private Cidade idCidade;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "ass_tipo_do_funcionario",

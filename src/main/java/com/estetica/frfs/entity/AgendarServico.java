@@ -14,9 +14,9 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "cliente")
+@Table(name = "agendar_servico")
 @EqualsAndHashCode
-public class Cliente implements Serializable {
+public class AgendarServico implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -28,37 +28,37 @@ public class Cliente implements Serializable {
     private String nome;
 
     @NotNull
-    @Column(name = "cpf", unique = true, length = 14)
-    private String cpf;
+    @Column(name = "data_agendamento_servico")
+    private Date dataAgendamentoServico;
 
     @NotNull
-    @Column(name = "data_nascimento")
-    private Date dataNascimento;
+    @Column(name = "data_finalizacao_servico")
+    private Date dataFinalizacaoServico;
 
     @NotNull
-    @Column(name = "telefone1", length = 14)
-    private String telefone1;
+    @Column(name = "data_cadastro_servico")
+    private Date dataCadastroServico;
 
-    @Column(name = "telefone2", length = 14)
-    private String telefone2;
-
-    @NotNull
-    @Column(name = "email", unique = true, length = 100)
-    private String email;
+    @Column(name = "situacao", length = 300)
+    private String situacao;
 
     @Column(name = "observacao", length = 300)
     private String observacao;
 
     @NotNull
-    @Column(name = "data_cadastro")
-    private Date dataCadastro;
-
-    @NotNull
     @Column(name = "status", length = 1)
     private String status = String.valueOf('A');
 
+    @Column(name = "nome_cliente", length = 300)
+    private String nomeCliente;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_cliente")
+    private Cliente idCliente;
+
     @NotNull
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_cidade")
-    private Cidade idCidade;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_funcionario")
+    private Funcionario idFuncionario;
+
 }

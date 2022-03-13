@@ -14,18 +14,25 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "cidade")
+@Table(name = "pagamento")
 @EqualsAndHashCode
-public class Cidade implements Serializable {
+public class Pagamento implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "desconto")
+    private Double desconto;
+
     @NotNull
-    @Column(name = "nome", length = 100)
-    private String nome;
+    @Column(name = "total")
+    private Double total;
+
+    @Column(name = "observacao", length = 300)
+    private String observacao;
 
     @NotNull
     @Column(name = "data_cadastro")
@@ -35,8 +42,4 @@ public class Cidade implements Serializable {
     @Column(name = "status", length = 1)
     private String status = String.valueOf('A');
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_estado")
-    private Estado idEstado;
 }
