@@ -22,7 +22,7 @@ public class CidadeDTO implements Serializable {
     private String nome;
 
     @JsonProperty("data_cadastro")
-    private Date dataCadastro;
+    private Date dataCadastro = new Date();
 
     @JsonProperty("status")
     private String status = String.valueOf('A');
