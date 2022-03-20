@@ -3,6 +3,7 @@ package com.estetica.frfs.service;
 import com.estetica.frfs.repository.VendaRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -10,5 +11,6 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class VendaServiceImpl implements VendarService {
 
-    private final VendaRepository vendaRepository;
+    @Autowired
+    private VendaRepository vendaRepository;
 }
