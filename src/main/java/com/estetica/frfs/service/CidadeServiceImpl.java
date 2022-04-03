@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class CidadeServiceImpl implements CidadeService {
+public class CidadeServiceImpl  implements CidadeService {
 
     @Autowired
     private CidadeRepository cidadeRepository;
